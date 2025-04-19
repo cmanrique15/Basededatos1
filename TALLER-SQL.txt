@@ -1,0 +1,194 @@
+TALLER SQL
+1. CREAR 3 TABLAS:
+CREATE DATABASE Almacen;
+USE Almacen;
+CREATE TABLE Productos(id_productos INT PRIMARY KEY, nombre VARCHAR(50), precio DECIMAL(10,2));
+CREATE TABLE Categorias(id_categorias INT PRIMARY KEY, nombre VARCHAR(50));
+CREATE TABLE Productos_Categorias(id INT PRIMARY KEY AUTO_INCREMENT, id_produ int, id_cat int, 
+FOREIGN KEY (id_produ) references Productos(id_productos), FOREIGN KEY (id_cat) references Categorias(id_categorias));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. INSERTAR DATOS:
+
+INSERT INTO Productos(id_productos,nombre,precio) 
+VALUES (1,"blusa",30000),(2,"falda",25000),(3,"camiseta",15000),(4,"short",35000),(5,"vestido",50000),(6,"jeans",60000),(7,"zapatos",100000),
+(8,"vestido de niña",40000),(9,"camiseta de niño",25000),(10,"zapatos de niños",80000),(11,"jeans de niños",90000),(12,"blusa de niña",20000);
+
+
+INSERT INTO Categorias(id_categorias,nombre) 
+VALUES (1,"ropa de mujer"),(2,"ropa de hombre"),(3,"ropa infantil");
+
+INSERT INTO Productos_Categorias(id_produ,id_cat) 
+VALUES (1,1),(2,1),(3,2),(4,1),(5,1),(6,1),(6,2),(7,1),(7,2),(8,3),(9,3),(10,3),(11,3),(12,3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. CONSULTAS:
+
+1. SELECT * FROM productos;
+
+
+
+
+
+
+
+
+
+
+
+2. SELECT * FROM productos WHERE precio >10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. SELECT Productos.nombre , categorias.nombre 
+FROM productos
+INNER JOIN  productos_categorias on id_produ = id_productos
+INNER JOIN  categorias on id_cat = id_categorias
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. SELECT productos.nombre , categorias.nombre 
+FROM categorias
+LEFT JOIN  productos_categorias on id_cat = id_categorias
+LEFT JOIN  productos on id_produ = id_productos
+Nota: para este punto se creó otra categoría y se dejo en blanco para detallar que se muestra también.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 ¿Para qué se usan las claves foráneas?
+R/ para relacionar las tablas.
+5 ¿Qué diferencia hay entre INNER JOIN y LEFT JOIN?
+R/ que el inner join devuelve solo filas con coincidencias en ambas tablas y el left join devuelve todas las filas de la tabla de izquierda y coincidencias de la derecha.
