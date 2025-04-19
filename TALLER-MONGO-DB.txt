@@ -4,85 +4,11 @@ PARTE1:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 2. db.Pokemones.find({ Attack: { $gt: 100 } });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 3. db.Pokemones.find({Defense: { $gte: 80, $lte: 100 }});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,50 +17,7 @@ PARTE2:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 5. db.Pokemones.aggregate([{$sort:{HP:-1}},{$group:{_id:"$Type",Pokemon:{$first:"$Name"},maximohp:{$first:"$HP"}}}]);
-
-
-
-
-
-
 
 
 
@@ -142,81 +25,11 @@ PARTE2:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 PARTE3:
 7. db.Pokemones.aggregate([{ $match: { Type1: "Water" } }, {$group: { _id: "$Name", promedioataque: { $avg: "$Attack" } } }, { $sort: { promedioataque: -1 } }]);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 8. db.Pokemones.aggregate([{$group:{_id:"$Generation",maximoataque:{$max:"$Attack"}}},{$sort:{maximoataque:-1}}]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -225,40 +38,7 @@ PARTE3:
 9. db.Pokemones.createIndex({Type1:1});
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 10. db.Pokemones.find({Type1:"Water"}).explain("executionStats");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 11. db.Pokemones.createIndex({ Type1: 1, Speed: -1 });
